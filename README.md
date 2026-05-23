@@ -1,91 +1,85 @@
-NLP Web Assistant
+Advanced NLP Web Assistant
 
 Project by Riya & Akansha
 
 📖 Project Overview
 
-This project is an interactive, web-based Natural Language Processing (NLP) Virtual Assistant. It is designed to understand natural language commands, filter out noise (stopwords), and execute specific intents. The assistant features a modern, mobile-friendly Graphical User Interface (GUI) and supports both text and voice inputs directly within the browser.
+This project is an intelligent, web-based Natural Language Processing (NLP) Virtual Assistant. Moving beyond basic keyword matching, this advanced version acts as a "smart brain" by integrating directly with a Large Language Model (LLM). It can understand complex natural language, execute local system commands, and fetch real-time data directly from the live internet.
 
-✨ Features
+✨ Key Features
 
-Speech-to-Text (STT): Uses the browser's native Web Speech API to capture voice commands via the microphone.
+Live Internet Search: Powered by AI grounding, the assistant can browse the live web to answer questions about current events, weather, news, and facts.
 
-Text-to-Speech (TTS): Audibly reads out responses using the window.speechSynthesis API.
+Smart App Commands: Understands commands to control the interface itself (e.g., "Turn on dark mode", "Set a timer").
 
-NLP Pipeline: Tokenizes user input and removes common English stopwords to identify the core intent of the command.
+Speech-to-Text (STT): Uses the Web Speech API to capture voice commands via the microphone.
 
-Knowledge Retrieval: Integrates with the Wikipedia REST API to fetch and summarize information dynamically.
+Text-to-Speech (TTS): Audibly reads out responses using the native browser speech synthesis.
 
-Mathematical Evaluator: Safely calculates math equations and expressions provided by the user.
+Modern GUI: Built with Tailwind CSS, offering a responsive, mobile-friendly chat interface with typing animations and dynamic theme switching.
 
-Time & Date Tracking: Provides real-time system clock and date information.
+🧠 How It Works
 
-Responsive GUI: Built with Tailwind CSS, ensuring the chat interface looks great on both desktops and mobile devices.
+The assistant uses a Dual-Layer Architecture:
 
-🛠️ Technologies Used
+Local Intent Parser (Doing Stuff): When you type a command, the app first checks if it's a local UI instruction (like changing to dark mode or opening YouTube). If matched, it executes the command instantly using JavaScript.
 
-Frontend: HTML5, JavaScript (ES6)
+AI Cloud Engine (Answering Stuff): If it's a general question, the app securely sends your query to the Gemini AI API. The AI uses its Google Search tool to find the real-time answer, synthesizes a concise response, and sends it back to the chat interface.
 
-Styling: Tailwind CSS (via CDN)
+🚀 How to Run the Project from Scratch
 
-APIs:
+Because this project relies on a live AI brain, you need to provide it with a free API key before opening it.
 
-Wikipedia REST API (for knowledge retrieval)
+Step 1: Get a Free API Key
 
-Web Speech API (for STT and TTS capabilities)
+Go to Google AI Studio.
 
-🚀 How to Run the Project
+Sign in with your Google account.
 
-Because this is a pure HTML/JavaScript application, it requires zero setup or server installations.
+Click on "Get API key" in the left menu and create a new key.
 
-Download or clone this repository.
+Copy the generated key.
 
-Ensure you have the index.html file on your device.
+Step 2: Add the Key to Your Code
 
-Simply double-click index.html to open it in any modern web browser (Google Chrome, Safari, Edge, or Firefox).
+Open the index.html file in any text editor (like Notepad, VS Code, or GitHub Codespaces).
 
-Note for Voice Features: To use the microphone button, ensure your browser has permission to access your microphone. (Voice recognition works best on Google Chrome).
+Scroll down to the JavaScript section (around line 110) and find this line:
 
-💬 Command Examples
+const apiKey = ""; 
 
-Try typing or saying these commands to interact with the assistant:
 
-Intent
+Paste your key inside the quotation marks:
 
-Example Commands
+const apiKey = "AIzaSyYourGeneratedKeyHere12345"; 
 
-Greeting
 
-"Hello", "Hi", "Hey assistant"
+Save the file.
 
-Time
+Step 3: Run the App
 
-"What time is it?", "Tell me the time"
+You do not need a server or Python installed. Simply double-click the index.html file to open it in your preferred web browser (Google Chrome is recommended for the best voice recognition support).
 
-Date
+The interface will load immediately.
 
-"What is today's date?", "Date today"
+Important: To use the voice features, click the microphone icon and click "Allow" when your browser asks for microphone permissions.
 
-Calculate
+💬 Example Commands to Try
 
-"Calculate 5 * 20", "What is 100 / 4"
+To trigger Live Web Search:
 
-Wikipedia
+"What is the weather in Delhi right now?"
 
-"Wikipedia Python programming", "Tell me about Black Holes"
+"Who won the latest Cricket World Cup?"
 
-Entertainment
+"What are the top tech news headlines today?"
 
-"Tell me a joke", "Funny"
+To trigger Local App Commands:
 
-🧠 How the NLP Logic Works
+"Turn on dark mode"
 
-The project uses a lightweight JavaScript replica of a standard Python NLP pipeline:
+"Switch to light theme"
 
-Normalization: The user's input is converted to lowercase.
+"Set a timer for 5 seconds"
 
-Tokenization: The string is split into an array of individual words using Regular Expressions (match(/\w+/g)).
-
-Stopword Filtering: Filler words (e.g., "is", "the", "please", "tell") are removed using a predefined array, leaving only high-value keywords.
-
-Intent Classification: The system scans the remaining keywords to trigger the appropriate response block (e.g., if the keyword "time" remains, it triggers the time function).
+"Open YouTube"
